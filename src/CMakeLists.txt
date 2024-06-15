@@ -22,10 +22,12 @@ set(CMAKE_CXX_STANDARD 20)
 # Source files (.cpp files) here
 set(SOURCE_FILES
     "Main.cpp"
+    "Scheduler.cpp"
 )
 
 # Header files here
 set(HEADER_FILES
+    "Scheduler.hpp"
 )
 
 add_executable(${PROJECT_NAME} ${SOURCE_FILES} ${HEADER_FILES})

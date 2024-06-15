@@ -1,7 +1,7 @@
-#include <iostream>
+#include "Scheduler.hpp"
 
 int main(int argc, char **argv)
 {
-    std::cout << "Hello World" << std::endl;
+    Scheduler::getInstance().getMessage();
     return 0;
 }
