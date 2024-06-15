@@ -1,0 +1,6 @@
+# Visual Studio stuffs
+.vs
+
+# Build artifacts
+out
+build
