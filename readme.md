@@ -1,19 +1,30 @@
-# A Quick And Simple C++ Template With Cmake!
-This is a quick and easy template for C++ and Cmake. It preconfigured cmake with required configurations to build an CLI
-app.
+# Simple Scheduler Demo
+This project, "Simple Scheduler Demo," is a demonstration of a simple scheduling system inspired by two primary sources:
+the scheduler mechanism from Cocos2D and the event loop model of JavaScript, particularly the setTimeout and setInterval
+functions.
 
-To use this template, just clone it down and open it and run cmake on it. You may need to change the project name
-inside.
+In many real-time applications, it is crucial to have a system that can efficiently manage the execution of various
+tasks at specified intervals or after certain delays. This scheduler implementation aims to provide a straightforward
+yet effective way to handle such timed tasks in C++.
 
-example:
-```bash
-git clone --depth 1 https://github.com/kelvinchin12070811/simple-cpp-cmake-template.git <project_name>
-```
+## Key Features
 
-or with ssh:
+1. Singleton Pattern: The scheduler is implemented as a singleton, ensuring there is only one instance managing all
+scheduled tasks.
+2. Task Scheduling: Tasks can be scheduled to run after a specific delay. This is akin to JavaScript's setTimeout, which
+schedules a function to be executed once after a certain period.
+3. Tick Function: The tick method processes all tasks that are due to be executed, similar to the event loop in
+JavaScript, which checks and executes tasks in a loop.
 
-```bash
-git clone --depth 1 git@github.com:kelvinchin12070811/simple-cpp-cmake-template.git <project_name>
-```
+## Implementation Details
 
-Then delete the .git folder inside and start with your own via `git init`, optional to remove this readme too.
+- Scheduler Class: The core component of the system, responsible for managing and executing scheduled tasks.
+    - schedule(): Adds a task to the scheduler to be executed after a given delay.
+    - tick(): Checks for tasks that are due to be executed and runs them.
+- Main Loop: In main.cpp, a loop continuously calls the tick function of the scheduler, ensuring tasks are executed at
+the appropriate times.
+
+This demo highlights the practical application of task scheduling in C++, drawing parallels to well-known mechanisms in
+game development and web programming, providing a foundational tool for real-time task management.
+
+![img](./screenshoot.png)
