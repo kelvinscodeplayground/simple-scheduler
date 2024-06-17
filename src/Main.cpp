@@ -12,10 +12,11 @@ int main(int argc, char **argv)
 
     schedule.schedule(5s, []() { std::cout << "Hello World" << std::endl; });
     schedule.schedule(10s, []() { std::cout << "This is after 10s" << std::endl; });
-    schedule.schedule(15s, [&]() {
+    schedule.schedule(30s, [&]() {
         std::cout << "Cleaning up" << std::endl;
         isRunning = false;
     });
+    schedule.schedule(7s, []() { std::cout << "Thi is after 7s" << std::endl; });
 
     while (isRunning) {
 
@@ -28,6 +29,8 @@ int main(int argc, char **argv)
         auto sleepTime = (1s / 60) - frameTime;
         std::this_thread::sleep_for(frameTime);
     }
+
+    std::cout << "Cleaned up and exit" << std::endl;
 
     return 0;
 }
