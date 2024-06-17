@@ -21,7 +21,7 @@ JavaScript, which checks and executes tasks in a loop.
 
 - Scheduler Class: The core component of the system, responsible for managing and executing scheduled tasks.
     - schedule(): Adds a task to the scheduler to be executed after a given delay.
-    - cancel(): Removed a task which is previously added to the scheduler by the returned id.
+    - cancel(): Remove a task which is previously added to the scheduler by the returned id.
     - tick(): Checks for tasks that are due to be executed and runs them.
 - Main Loop: In main.cpp, a loop continuously calls the tick function of the scheduler, ensuring tasks are executed at
 the appropriate times.
