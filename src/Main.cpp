@@ -11,12 +11,15 @@ int main(int argc, char **argv)
     auto &schedule = Scheduler::getInstance();
 
     schedule.schedule(5s, []() { std::cout << "Hello World" << std::endl; });
+    auto task = schedule.schedule(10s, []() { std::cout << "This will be canceled" << std::endl; });
     schedule.schedule(10s, []() { std::cout << "This is after 10s" << std::endl; });
     schedule.schedule(30s, [&]() {
         std::cout << "Cleaning up" << std::endl;
         isRunning = false;
     });
     schedule.schedule(7s, []() { std::cout << "Thi is after 7s" << std::endl; });
+
+    schedule.cancel(task);
 
     while (isRunning) {
 

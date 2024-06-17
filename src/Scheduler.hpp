@@ -9,6 +9,7 @@ public:
     using Task = std::function<void()>;
     using ScheduledTasks = std::multimap<std::chrono::steady_clock::time_point, Task>;
     using ScheduledTask = ScheduledTasks::iterator;
+    using ScheduledTime = std::chrono::steady_clock::time_point;
 
 public:
     Scheduler() = default;
@@ -17,7 +18,8 @@ public:
 
     static Scheduler &getInstance();
 
-    ScheduledTask schedule(std::chrono::milliseconds delay, std::function<void()> task);
+    ScheduledTime schedule(std::chrono::milliseconds delay, std::function<void()> task);
+    void cancel(ScheduledTime task);
 
     void tick();
     void getMessage();

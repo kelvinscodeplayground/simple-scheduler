@@ -8,10 +8,17 @@ Scheduler &Scheduler::getInstance()
     return instance;
 }
 
-Scheduler::ScheduledTask Scheduler::schedule(std::chrono::milliseconds delay, std::function<void()> task)
+Scheduler::ScheduledTime Scheduler::schedule(
+        std::chrono::milliseconds delay, std::function<void()> task)
 {
-    auto it = tasks.emplace(std::chrono::steady_clock::now() + delay, std::move(task));
-    return it;
+    auto time = std::chrono::steady_clock::now() + delay;
+    tasks.emplace(time, std::move(task));
+    return time;
+}
+
+void Scheduler::cancel(ScheduledTime task)
+{
+    tasks.erase(task);
 }
 
 void Scheduler::tick()
@@ -20,8 +27,7 @@ void Scheduler::tick()
     auto begin = tasks.begin();
     auto end = tasks.upper_bound(currentTime);
 
-    for (auto it = begin; it != end;)
-    {
+    for (auto it = begin; it != end;) {
         std::cout << it->first.time_since_epoch() << std::endl;
         it->second();
         it = tasks.erase(it);
